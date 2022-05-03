@@ -1,7 +1,4 @@
 
-// select colour palettes
-// like or dislike
-
 // show number of selected palettes
 let count = 0;
 
@@ -15,7 +12,6 @@ const addCount = () => {
     paletteCount.innerText = count;
 }
 
-
 // buttons
 let likeBtn = document.createElement("button");
 likeBtn.innerText = "Like";
@@ -28,49 +24,29 @@ finishBtn.innerText = "Done";
 
 // display palettes
 
-let paletteTable = document.createElement("table");
-let tableRow1 = document.createElement("tr");
-let tableCell1 = document.createElement("td");
-let tableRow2 = document.createElement("tr");
-let tableCell2 = document.createElement("td");
-let tableRow3 = document.createElement("tr");
-let tableCell3 = document.createElement("td");
-let tableRow4 = document.createElement("tr");
-let tableCell4 = document.createElement("td");
-let tableRow5 = document.createElement("tr");
-let tableCell5 = document.createElement("td");
+// function to create table cells with blank space and white background
+function tableCell(table) {
+    this.row = document.createElement("tr");
+    this.cell = document.createElement("td");
+    this.cell.innerHTML = "&nbsp";
+    this.cell.style.backgroundColor = "white";
+    this.row.appendChild(this.cell);
+    table.appendChild(this.row)
+    document.body.appendChild(table);
 
-let pal1 = document.createElement("p");
-pal1.innerText = "x";
-pal1.style.backgroundColor = "red";
-let pal2 = document.createElement("p");
-pal2.innerText = "x";
-pal2.style.backgroundColor = "blue";
+}
 
-tableCell1.innerHTML = "&nbsp";
-tableCell2.innerHTML = "&nbsp";
-tableCell3.innerHTML = "&nbsp";
-tableCell4.innerHTML = "&nbsp";
-tableCell5.innerHTML = "&nbsp";
+// function to make table with colored rows
+function newTable(color1, color2, color3, color4, color5) {
+    this.table = document.createElement("table");
+    let rowList = [];
+    for (let i = 0; i < arguments.length; i++){
+        rowList.push(new tableCell(this.table));
+        rowList[i].cell.style.backgroundColor = arguments[i];
+    }
+}
 
-tableCell1.style.backgroundColor = "red";
-tableCell2.style.backgroundColor = "blue";
-tableCell3.style.backgroundColor = "white";
-tableCell4.style.backgroundColor = "white";
-tableCell5.style.backgroundColor = "white";
-
-
-tableRow1.appendChild(tableCell1);
-tableRow2.appendChild(tableCell2);
-tableRow3.appendChild(tableCell3);
-tableRow4.appendChild(tableCell4);
-tableRow5.appendChild(tableCell5);
-
-document.body.appendChild(tableRow1);
-document.body.appendChild(tableRow2);
-document.body.appendChild(tableRow3);
-document.body.appendChild(tableRow4);
-document.body.appendChild(tableRow5);
+let paletteTable2 = new newTable("red", "blue", "white", "white", "white");
 
 
 document.body.appendChild(dislikeBtn);
@@ -80,4 +56,3 @@ document.body.appendChild(finishBtn);
 
 
 
-// You have added X amount of palettes
