@@ -64,17 +64,44 @@ function tableCell(table) {
 }
 
 // function to make table with colored rows
-function newTable(color1, color2, color3, color4, color5) {
+function newTable(colArray) {
     this.table = document.createElement("table");
     let rowList = [];
-    for (let i = 0; i < arguments.length; i++){
+    for (let i = 0; i < colArray.length; i++){
         rowList.push(new tableCell(this.table));
-        rowList[i].cell.style.backgroundColor = arguments[i];
+        rowList[i].cell.style.backgroundColor = colArray[i];
     }
 }
 
-let paletteTable = new newTable("red", "blue", "white", "white", "white");
+// Color palette arrays
+const twoColPalettes = [
+    ["#02343F", "#F0EDCC", "white", "white", "white"],
+    ["#331B3F", "#ACC7B4", "white", "white", "white"],
+    ["#1E4174", "#DDA94B", "white", "white", "white"]
+]
 
+const threeColPalettes = [
+    ["#FFF1BC", "#7DC383", "#699C78", "white", "white"],
+    ["#586FDD", "#7CA2CC", "#F0F0F0", "white", "white"],
+    [" #FEF2C5", "#C38A8B", "#B0747B", "white", "white"]
+]
+
+const fourColPalettes = [
+    ["#222831", "#393E46", "#00ADB5", "#EEEEEE", "white"],
+    ["F9F7F7", "#DBE2EF", "#3F72AF", "#112D4E", "white"],
+    ["#07689F", "#A2D5F2", "#FAFAFA", "#FF7E67", "white"]
+]
+
+const fiveColPalettes = [
+    ["#012C4B", "#005395", "#C711A4", "#8A3D7B", "#5D0247"],
+    ["#1A2A5A", "#6D83B8", "#8EA1CA", "#D1D562", "#689240"],
+    ["#809a41", "#a30001", "#fe4c4a", "#40130d", "#6c6f74"]
+]
+
+
+
+let n = Math.floor(Math.random() * 3)
+let paletteTable = new newTable(twoColPalettes[n]);
 
 
 document.body.appendChild(twoBtn);
