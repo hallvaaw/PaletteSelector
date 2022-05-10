@@ -1,0 +1,58 @@
+body {
+    margin: 0 auto;
+    max-width: 50em;
+    background-color: #222222;
+}
+
+
+p {
+    color: #d9deec;
+    font-size: 16px;
+    font: sans-serif;
+    text-align: center;
+
+}
+
+
+button {
+    background-color: #7b859c;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px;
+    border: 4px double #222222;
+    width: 150px;
+    margin: 2px;
+    border-radius: 10px;
+}
+
+
+
+table {
+    float: middle;
+    width: 60%;
+    border-collapse: collapse;
+    background-color: "red";
+
+}
+
+
+#dislike-btn {
+    float: left;
+    border-radius: 100%;
+}
+
+#like-btn {
+    float: right;
+    border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+
+

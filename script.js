@@ -11,11 +11,16 @@ const addCount = () => {
 }
 
 
+let colSelect = document.createElement("div"); // For like, dislike and displaying colour palettes
+
 // buttons
 let likeBtn = document.createElement("button");
+likeBtn.id = "like-btn";
+console.log(likeBtn.id);
 likeBtn.innerText = "Like";
 likeBtn.addEventListener('click', addCount);
 let dislikeBtn = document.createElement("button");
+dislikeBtn.id = "dislike-btn";
 dislikeBtn.innerText = "Dislike";
 let finishBtn = document.createElement("button");
 finishBtn.innerText = "Done";
@@ -49,6 +54,8 @@ const updateColInt = (newInt) => {
 };
 
 
+colSelect.appendChild(dislikeBtn);
+colSelect.appendChild(likeBtn);
 // display palettes
 
 // function to create table cells with blank space and white background
@@ -56,10 +63,10 @@ function tableCell(table) {
     this.row = document.createElement("tr");
     this.cell = document.createElement("td");
     this.cell.innerHTML = "&nbsp";
-    this.cell.style.backgroundColor = "white";
+    this.cell.style.backgroundColor = "#222222";
     this.row.appendChild(this.cell);
     table.appendChild(this.row)
-    document.body.appendChild(table);
+    colSelect.appendChild(table);
 
 }
 
@@ -75,9 +82,9 @@ function newTable(colArray) {
 
 // Color palette arrays
 const twoColPalettes = [
-    ["#02343F", "#F0EDCC", "white", "white", "white"],
-    ["#331B3F", "#ACC7B4", "white", "white", "white"],
-    ["#1E4174", "#DDA94B", "white", "white", "white"]
+    ["#02343F", "#F0EDCC", "#222222", "#222222", "#222222"],
+    ["#331B3F", "#ACC7B4", "#222222", "#222222", "#222222"],
+    ["#1E4174", "#DDA94B", "#222222", "#222222", "#222222"]
 ]
 
 const threeColPalettes = [
@@ -104,15 +111,14 @@ let n = Math.floor(Math.random() * 3)
 let paletteTable = new newTable(twoColPalettes[n]);
 
 
+
+
+document.body.appendChild(colSelect);
 document.body.appendChild(twoBtn);
 document.body.appendChild(threeBtn);
 document.body.appendChild(fourBtn);
 document.body.appendChild(fiveBtn);
 document.body.appendChild(selectedColInfo);
-
-
-document.body.appendChild(dislikeBtn);
-document.body.appendChild(likeBtn);
 document.body.appendChild(paletteCount);
 document.body.appendChild(finishBtn);
 
