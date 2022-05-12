@@ -12,6 +12,7 @@ const addCount = () => {
 
 
 let colSelect = document.createElement("div"); // For like, dislike and displaying colour palettes
+colSelect.id = "col-select";
 
 // buttons
 let likeBtn = document.createElement("button");
@@ -22,10 +23,15 @@ likeBtn.addEventListener('click', addCount);
 let dislikeBtn = document.createElement("button");
 dislikeBtn.id = "dislike-btn";
 dislikeBtn.innerText = "Dislike";
+let finishDiv = document.createElement("div"); // To make centering of the button easier
+finishDiv.id = "finish-div";
 let finishBtn = document.createElement("button");
 finishBtn.innerText = "Done";
+finishBtn.id = "finish-btn";
 
 // number of colours
+let colNumber = document.createElement("div");
+colNumber.id = "col-number";
 let colInt = 2; // default is two colours
 let selectedColInfo = document.createElement("p");
 let colInfo = document.createElement("h2");
@@ -114,13 +120,17 @@ let paletteTable = new newTable(twoColPalettes[n]);
 
 
 document.body.appendChild(colSelect);
-document.body.appendChild(twoBtn);
-document.body.appendChild(threeBtn);
-document.body.appendChild(fourBtn);
-document.body.appendChild(fiveBtn);
 document.body.appendChild(selectedColInfo);
+
+colNumber.appendChild(twoBtn);
+colNumber.appendChild(threeBtn);
+colNumber.appendChild(fourBtn);
+colNumber.appendChild(fiveBtn);
+document.body.appendChild(colNumber);
+
 document.body.appendChild(paletteCount);
-document.body.appendChild(finishBtn);
+finishDiv.appendChild(finishBtn);
+document.body.appendChild(finishDiv);
 
 
 

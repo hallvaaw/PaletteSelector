@@ -2,13 +2,16 @@ body {
     margin: 0 auto;
     max-width: 50em;
     background-color: #222222;
+    top: 100px;
+    position: relative;
 }
 
 
 p {
     color: #d9deec;
-    font-size: 16px;
-    font: sans-serif;
+    font-size: 20px;
+    font-family: verdana;
+    font-weight: bold;
     text-align: center;
 
 }
@@ -16,21 +19,24 @@ p {
 
 button {
     background-color: #7b859c;
-    font-size: 16px;
-    text-align: center;
+    font-size: 18px;
+    font-family: verdana;
     cursor: pointer;
     padding: 15px;
     border: 4px double #222222;
-    width: 150px;
+    width: 170px;
     margin: 2px;
     border-radius: 10px;
 }
 
+button:hover {
+    background-color: #d9deec;
+}
 
 
 table {
-    float: middle;
-    width: 60%;
+    margin: auto;
+    width: 40%;
     border-collapse: collapse;
     background-color: "red";
 
@@ -39,16 +45,29 @@ table {
 
 #dislike-btn {
     float: left;
-    border-radius: 100%;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 
 #like-btn {
     float: right;
-    border-radius: 100%;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
 }
 
+#col-number {
+    text-align: center;
+}
 
+#finish-div {
+    text-align: center;
+}
 
+#finish-btn {
+    text-align: center;
+}
 
 
 
