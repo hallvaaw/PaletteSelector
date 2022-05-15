@@ -38,8 +38,8 @@ table {
     margin: auto;
     width: 40%;
     border-collapse: collapse;
-    background-color: "red";
-
+    font-family: verdana;
+    color: #d9deec;
 }
 
 
@@ -69,7 +69,13 @@ table {
     text-align: center;
 }
 
+td {
+    cursor: pointer;
+}
 
+span:hover {
+    background-color: #222222;
+}
 
 
 
