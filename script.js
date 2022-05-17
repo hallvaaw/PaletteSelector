@@ -7,15 +7,15 @@ const twoColPalettes = [
 ]
 
 const threeColPalettes = [
-    ["#FFF1BC", "#7DC383", "#699C78", "white", "white"],
-    ["#586FDD", "#7CA2CC", "#F0F0F0", "white", "white"],
-    [" #FEF2C5", "#C38A8B", "#B0747B", "white", "white"]
+    ["#FFF1BC", "#7DC383", "#699C78", "#222222", "#222222"],
+    ["#586FDD", "#7CA2CC", "#F0F0F0", "#222222", "#222222"],
+    [" #FEF2C5", "#C38A8B", "#B0747B", "#222222", "#222222"]
 ]
 
 const fourColPalettes = [
-    ["#222831", "#393E46", "#00ADB5", "#EEEEEE", "white"],
-    ["F9F7F7", "#DBE2EF", "#3F72AF", "#112D4E", "white"],
-    ["#07689F", "#A2D5F2", "#FAFAFA", "#FF7E67", "white"]
+    ["#222831", "#393E46", "#00ADB5", "#EEEEEE", "#222222"],
+    ["F9F7F7", "#DBE2EF", "#3F72AF", "#112D4E", "#222222"],
+    ["#07689F", "#A2D5F2", "#FAFAFA", "#FF7E67", "#222222"]
 ]
 
 const fiveColPalettes = [
@@ -68,20 +68,28 @@ let colInfo = document.createElement("h2");
 selectedColInfo.innerText = `Showing palette with ${colInt} colours`;
 
 let twoBtn = document.createElement("button");
-twoBtn.addEventListener('click', function(){selectNumber(0)});
-twoBtn.innerText = "Two colours"
+twoBtn.addEventListener('click', function(){paletteChoice(0)});
+twoBtn.addEventListener('click', function(){dislikePalette()});
+twoBtn.addEventListener('click', function(){updateSelectedNumber(0)});
+twoBtn.innerText = "Two colours";
 
 let threeBtn = document.createElement("button");
-threeBtn.addEventListener('click', function(){selectNumber(1)});
-threeBtn.innerText = "Three colours"
+threeBtn.addEventListener('click', function(){paletteChoice(1)});
+threeBtn.addEventListener('click', function(){dislikePalette()});
+threeBtn.addEventListener('click', function(){updateSelectedNumber(1)});
+threeBtn.innerText = "Three colours";
 
 let fourBtn = document.createElement("button");
-fourBtn.addEventListener('click', function(){selectNumber(2)});
-fourBtn.innerText = "Four colours"
+fourBtn.addEventListener('click', function(){paletteChoice(2)});
+fourBtn.addEventListener('click', function(){dislikePalette()});
+fourBtn.addEventListener('click', function(){updateSelectedNumber(2)});
+fourBtn.innerText = "Four colours";
 
 let fiveBtn = document.createElement("button");
-fiveBtn.addEventListener('click', function(){selectNumber(3)});
-fiveBtn.innerText = "Five colours"
+fiveBtn.addEventListener('click', function(){paletteChoice(3)});
+fiveBtn.addEventListener('click', function(){dislikePalette()});
+fiveBtn.addEventListener('click', function(){updateSelectedNumber(3)});
+fiveBtn.innerText = "Five colours";
 
 
 const updateColInt = (newInt) => {
@@ -92,6 +100,10 @@ const updateColInt = (newInt) => {
 
 colSelect.appendChild(dislikeBtn);
 colSelect.appendChild(likeBtn);
+
+let selectedNumber = 0;
+
+
 
 
 // display palettes
@@ -152,35 +164,78 @@ function saveFavPalettes(colArray) {
     }
 }
 
+
 let n = Math.floor(Math.random() * 3)
-let paletteTable = new newTable(twoColPalettes[n]);
+let paletteTable = new newTable(paletteChoice(selectedNumber)[n]);
 
 function likePalette() {
     this.table = document.getElementById("col-table");
     this.table.remove();
     addCount();
-    let favPaletteTable = new saveFavPalettes(twoColPalettes[n]);
+    let favPaletteTable = new saveFavPalettes(paletteChoice(selectedNumber)[n]);
     n = Math.floor(Math.random() * 3)
-    paletteTable = new newTable(twoColPalettes[n]);
+    paletteTable = new newTable(paletteChoice(selectedNumber)[n]);
 }
 
 function dislikePalette() {
     this.table = document.getElementById("col-table");
     this.table.remove();
     n = Math.floor(Math.random() * 3)
-    paletteTable = new newTable(twoColPalettes[n]);
+    paletteTable = new newTable(paletteChoice(selectedNumber)[n]);
 }
 
-let selectedNumber = 2;
 
 // function for selected number of colours in palette
-function selectNumber(inputNum) {
+function paletteChoice(inputNum) {
     selectedNumber = inputNum;
     updateColInt(selectedNumber);
-    paletteChoice = palettesArray[selectedNumber];
-    return paletteChoice;
+    selectNumber = palettesArray[selectedNumber];
+    return selectNumber;
 }
 
+function updateSelectedNumber(inputNum) {
+    switch (inputNum) {
+        case 0:
+            twoBtn.style.backgroundColor = "#B7CFDC";
+            threeBtn.style.backgroundColor = "#7b859c";
+            fourBtn.style.backgroundColor = "#7b859c";
+            fiveBtn.style.backgroundColor = "#7b859c";
+            twoBtn.disabled = true;
+            threeBtn.disabled = false;
+            fourBtn.disabled = false;
+            fiveBtn.disabled = false;
+            break;
+        case 1:
+            twoBtn.style.backgroundColor = "#7b859c";
+            threeBtn.style.backgroundColor = "#B7CFDC";
+            fourBtn.style.backgroundColor = "#7b859c";
+            fiveBtn.style.backgroundColor = "#7b859c";
+            twoBtn.disabled = false;
+            threeBtn.disabled = true;
+            fourBtn.disabled = false;
+            fiveBtn.disabled = false;
+            break;
+        case 2:
+            twoBtn.style.backgroundColor = "#7b859c";
+            threeBtn.style.backgroundColor = "#7b859c";
+            fourBtn.style.backgroundColor = "#B7CFDC";
+            fiveBtn.style.backgroundColor = "#7b859c";
+            twoBtn.disabled = false;
+            threeBtn.disabled = false;
+            fourBtn.disabled = true;
+            fiveBtn.disabled = false;
+            break;
+        case 3:
+            twoBtn.style.backgroundColor = "#7b859c";
+            threeBtn.style.backgroundColor = "#7b859c";
+            fourBtn.style.backgroundColor = "#7b859c";
+            fiveBtn.style.backgroundColor = "#B7CFDC";
+            twoBtn.disabled = false;
+            threeBtn.disabled = false;
+            fourBtn.disabled = false;
+            fiveBtn.disabled = true;
+    }
+}
 
 
 document.body.appendChild(colSelect);

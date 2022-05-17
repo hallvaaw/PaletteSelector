@@ -79,5 +79,11 @@ span:hover {
 
 
 
+.selected_button {
+    background-color: #B7CFDC;
+}
 
+.unselected_button {
+    background-color: #7b859c;
+}
 
